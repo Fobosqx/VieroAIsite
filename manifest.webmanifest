@@ -1,0 +1,17 @@
+{
+  "name": "VieroAI — AI Design Studio",
+  "short_name": "VieroAI",
+  "description": "36 идей и AI-дизайн для Wildberries и Ozon",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090d19",
+  "theme_color": "#090d19",
+  "icons": [
+    {
+      "src": "assets/viero-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
