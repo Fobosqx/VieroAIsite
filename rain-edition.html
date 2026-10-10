@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1210"><meta name="description" content="Предпросмотр нового VieroAI — идеи рекламных карточек для маркетплейсов.">
+<title>VieroAI • Rain Edition — новая версия</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;600;700;800&display=swap');
+:root{--bg:#0b1210;--panel:#14201b;--txt:#f8faef;--muted:#b0c4b5;--line:#355244;--lime:#d9fd75}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--txt);font-family:Manrope,system-ui,sans-serif}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}.container{width:min(1100px,calc(100% - 36px));margin:auto}
+header{position:sticky;z-index:20;top:0;background:#0b1210e9;backdrop-filter:blur(18px);border-bottom:1px solid #35524480}.head{height:70px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;font:700 19px Unbounded,Manrope,sans-serif;letter-spacing:-1px}.brand svg{width:37px;height:37px}.brand em{font-style:normal;color:var(--lime)}.nav{display:flex;gap:23px;color:#bccfbe;font-size:13px;font-weight:700}.bot{border-radius:99px;background:var(--lime);color:#111d16;font-size:12px;font-weight:800;padding:13px 18px;white-space:nowrap}
+.hero{isolation:isolate;overflow:hidden;position:relative;min-height:575px;background:radial-gradient(ellipse at 80% 48%,#285e446d,transparent 46%),linear-gradient(120deg,#101e19,#162d22 60%,#273d2c)}.hero[data-weather=rain]{background:linear-gradient(130deg,#0c1720,#24414c)}.hero[data-weather=sun]{background:radial-gradient(circle at 79% 25%,#ffc3625c,transparent 40%),linear-gradient(130deg,#222d1d,#596549)}
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;min-height:575px;position:relative;z-index:2;gap:14px}.hero-text{padding:55px 0}.eyebrow{font-size:11px;color:var(--lime);letter-spacing:2.5px;font-weight:800;text-transform:uppercase}.hero h1{font:700 clamp(35px,5.3vw,66px)/1.15 Unbounded,Manrope,sans-serif;letter-spacing:-2.7px;margin:24px 0}.hero h1 span{color:var(--lime)}.lead{max-width:530px;font-size:15px;line-height:1.8;color:#c6d5c9}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}.secondary{background:#ffffff19;border:1px solid #ffffff41;border-radius:99px;padding:13px 18px;font-size:12px;font-weight:700}.weathers{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:34px}.weathers span{font-size:11px;color:#bdd3c5;margin-right:4px}.weathers button{border:1px solid #ffffff43;border-radius:99px;background:#ffffff0f;color:white;padding:8px 12px;font-size:11px}.weathers button.active{background:var(--lime);color:#0c1b10}
+.scene{height:400px;position:relative;display:grid;place-items:center}.halo{position:absolute;border-radius:50%;width:220px;height:220px;background:#ebfeaa35;filter:blur(55px)}.sun{position:absolute;right:50px;top:35px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle at 33% 28%,#fff5cf,#ecc477 65%,#cba152);box-shadow:0 0 60px #e3cd7f70;transition:all .4s}.forest{position:absolute;bottom:0;width:100%;height:230px;left:0;opacity:.9}.forest:before,.forest:after{content:"";position:absolute;bottom:0;width:100%;height:100%;background:linear-gradient(135deg,transparent 20%,#081d17 20% 38%,transparent 38%) 0 15px/65px 120px repeat-x;clip-path:polygon(0 100%,3% 20%,6% 100%,10% 0%,14% 100%,20% 16%,25% 100%,33% 8%,38% 100%,42% 10%,47% 100%,54% 20%,60% 100%,70% 1%,77% 100%,82% 15%,88% 100%,95% 4%,100% 100%)}.forest:after{opacity:.45;transform:scaleX(-1) translateY(-30px);filter:blur(3px)}.scene-card{position:relative;z-index:2;margin:125px 0 0 60px;border:1px solid #ffffff55;border-radius:22px;background:#0c2118ba;backdrop-filter:blur(12px);padding:26px 25px;box-shadow:0 20px 90px #0008;transform:rotate(-5deg)}.scene-card b{display:block;font:700 28px/1.1 Unbounded,sans-serif;color:var(--lime)}.scene-card small{display:block;margin-top:12px;line-height:1.65;color:#d3e2d3}.rain-layer{pointer-events:none;position:absolute;inset:0;z-index:1;opacity:0}.rain-layer i{position:absolute;left:var(--x);height:70px;width:2px;top:-20%;background:linear-gradient(transparent,#e3f6fd85);animation:rain var(--d) linear infinite;animation-delay:var(--delay)}.hero[data-weather=rain] .rain-layer{opacity:.75}.hero[data-weather=sun] .sun{background:radial-gradient(circle,#fff7bc,#fabe6c);box-shadow:0 0 110px 30px #ffb344a0}@keyframes rain{to{transform:translateY(800px)}}@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.section{padding:65px 0}.section h2{font:700 clamp(22px,4vw,37px)/1.25 Unbounded,Manrope,sans-serif;letter-spacing:-1.2px}.sub{color:var(--muted);line-height:1.7;font-size:13px}.tags{display:flex;gap:8px;overflow:auto;padding:15px 0 22px;scrollbar-width:none}.tags button{flex:none;padding:11px 15px;border-radius:99px;border:1px solid var(--line);background:#192b23;color:#d2e2d6;font-size:12px}.tags button.active{color:#0e1b11;background:var(--lime);border-color:var(--lime);font-weight:800}.feed{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.card{background:var(--panel);border:1px solid #32463a;border-radius:18px;overflow:hidden;transition:transform .25s}.card:hover{transform:translateY(-4px)}.photo{height:245px;position:relative;background:linear-gradient(135deg,#526a4a,#131e19)}.photo img{width:100%;height:100%;display:block;object-fit:cover}.pill{position:absolute;top:10px;left:10px;border-radius:99px;padding:6px 10px;font-size:10px;font-weight:800;background:#071810c7}.card-body{padding:14px}.card h3{font-size:14px;line-height:1.45;margin:0 0 5px}.card p{color:#9cb4a5;font-size:11px;margin:0 0 13px}.card button{width:100%;border:0;border-radius:11px;padding:10px;background:#ebf4dc;color:#0d1a11;font-weight:800;font-size:12px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}.step{background:#14241b;border:1px solid #355044;border-radius:22px;padding:24px}.step b{font:700 33px Unbounded,sans-serif;color:var(--lime)}.step h3{font-size:14px;margin:15px 0 7px}.step p{font-size:12px;color:var(--muted);line-height:1.6}.footer{padding:34px 0 65px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;color:#9eb3a5;font-size:12px}.notice{display:block;padding:10px 0;color:#a7bcac;font-size:10px;text-align:center;background:#122119}
+@media(max-width:800px){.nav{display:none}.feed{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{height:220px}.hero-inner{grid-template-columns:1fr}.hero-text{padding:45px 0 5px}.hero{min-height:unset}.scene{height:210px}.sun{top:0;right:20%}.scene-card{margin:30px 0 0 0}.forest{height:160px}.hero h1{letter-spacing:-1.8px}}
+@media(max-width:560px){.container{width:calc(100% - 32px)}.head{height:64px}.brand{font-size:17px}.bot{padding:12px 13px;font-size:11px}.hero h1{font-size:clamp(31px,9vw,44px);letter-spacing:-1.8px}.lead{font-size:13px}.scene{height:190px}.scene-card{padding:17px 19px}.scene-card b{font-size:22px}.weathers{margin-top:24px}.feed{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:215px}.card-body{padding:11px}.card h3{font-size:12px}.card p{font-size:10px}.section{padding:48px 0}.steps{grid-template-columns:1fr}.step{padding:20px}.footer{display:block}.footer a{display:inline-block;margin-top:10px}}
+
+/* A single calm ambient atmosphere: slow moving light and haze. No weather UI. */
+.hero{background:radial-gradient(ellipse at 77% 28%,#305f4180 0%,transparent 48%),linear-gradient(135deg,#0d1813,#14271f 58%,#253e2b);}
+.ambient-glow{position:absolute;inset:-25%;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 72% 35%,#9ed19e4a,transparent 34%),radial-gradient(ellipse at 85% 65%,#a5f7ab26,transparent 42%);filter:blur(34px);animation:ambient-drift 20s ease-in-out infinite alternate;transform-origin:70% 45%}
+.ambient-mist{position:absolute;pointer-events:none;z-index:1;inset:0;opacity:.65;background:linear-gradient(105deg,transparent 28%,#d6f2cc0a 45%,transparent 60%),radial-gradient(ellipse at 65% 80%,#c4e7cb24,transparent 50%);animation:mist-glide 26s ease-in-out infinite alternate}
+.scene .halo{background:#c3eab625;filter:blur(65px);animation:halo-pulse 9s ease-in-out infinite alternate}
+.glint{position:absolute;z-index:1;width:8px;height:8px;border-radius:50%;background:#d9fd75aa;box-shadow:0 0 30px #caff9d87;animation:glint-rise 10s ease-in-out infinite alternate}
+.glint-one{top:29%;left:24%}.glint-two{top:63%;right:22%;width:5px;height:5px;animation-delay:-4s}
+.scene-card{animation:card-hover 8s ease-in-out infinite alternate}
+.atmosphere-note{color:#cce4d3;opacity:.8;font-size:11px;letter-spacing:.3px;margin-top:30px}
+@keyframes ambient-drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(4%,3%,0) scale(1.06)}}
+@keyframes mist-glide{from{transform:translateX(-4%);opacity:.35}to{transform:translateX(5%);opacity:.72}}
+@keyframes halo-pulse{to{opacity:.55;transform:scale(1.2)}}
+@keyframes glint-rise{to{transform:translateY(-38px);opacity:.24}}
+@keyframes card-hover{to{transform:rotate(-3deg) translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.ambient-glow,.ambient-mist,.scene .halo,.glint,.scene-card{animation:none!important}}
+
+/* VieroAI animated rainy editorial: light performance budget on mobile. */
+.brand-mark{position:relative;display:inline-flex;align-items:center;width:70px;height:54px;justify-content:flex-start;isolation:isolate;overflow:visible}
+.brand-track{position:relative;display:block;width:44px;height:44px;transform-origin:center;animation:logo-enter 850ms cubic-bezier(.19,1.2,.3,1) both,logo-cruise 11s ease-in-out 1s infinite}
+.brand-track .animated-logo{display:block;width:44px;height:44px;filter:drop-shadow(0 4px 16px #d4ff8052);transition:filter .4s}
+.brand-mark:hover .animated-logo{filter:drop-shadow(0 7px 22px #d4ff80a0)}
+.brand-sheen{position:absolute;inset:-15px;background:linear-gradient(125deg,transparent 35%,#fff8 48%,transparent 58%);transform:translateX(-140%) rotate(-8deg);animation:logo-gleam 8s ease-in-out 1.5s infinite;pointer-events:none;clip-path:inset(14px 12px 14px 0 round 16px)}
+@keyframes logo-enter{0%{transform:translateX(-55px) rotate(-25deg) scale(.4);opacity:0}75%{transform:translateX(7px) rotate(8deg) scale(1.07);opacity:1}100%{transform:translateX(0) rotate(0) scale(1);opacity:1}}
+@keyframes logo-cruise{0%,18%,65%,100%{transform:translateX(0) rotate(0)}35%{transform:translateX(16px) rotate(7deg)}50%{transform:translateX(12px) rotate(-4deg)}}
+@keyframes logo-gleam{0%,55%,100%{transform:translateX(-130%) rotate(-8deg)}66%{transform:translateX(130%) rotate(-8deg)}}
+.rain-screen,.rain-hero{pointer-events:none;position:fixed;z-index:13;inset:0;overflow:hidden;opacity:.37;transform:translateZ(0);contain:strict}
+.rain-hero{position:absolute;z-index:1;opacity:.48;contain:layout paint}
+.rain-screen i,.rain-hero i{position:absolute;top:-120px;width:1px;height:var(--length,65px);border-radius:50%;background:linear-gradient(to bottom,transparent,#d1eff5cb);opacity:var(--opacity,.6);transform:translate3d(0,-120px,0) rotate(11deg);animation:rain-fall var(--duration,1.3s) linear var(--delay,0s) infinite;will-change:transform}
+@keyframes rain-fall{to{transform:translate3d(-120px,calc(100vh + 260px),0) rotate(11deg)}}
+.hero{background:radial-gradient(ellipse at 73% 27%,#336c6087 0%,transparent 48%),linear-gradient(135deg,#0b1c21,#18352f 60%,#1b3329)}
+.hero .ambient-mist{z-index:0;opacity:.64}
+.feed .card{transition:transform .55s cubic-bezier(.2,.75,.24,1),opacity .65s ease,border-color .3s,box-shadow .5s;transition-delay:var(--reveal-delay,0ms),var(--reveal-delay,0ms),0ms,0ms;will-change:auto;opacity:0;transform:translateY(26px) scale(.975)}
+.feed .card.is-visible{opacity:1;transform:translateY(0) scale(1)}
+.feed .card .photo{overflow:hidden}
+.feed .card .photo:after{content:"";pointer-events:none;position:absolute;inset:0;background:linear-gradient(112deg,transparent 25%,#ffffff17 46%,transparent 62%);transform:translateX(-110%);transition:transform 850ms ease}
+.feed .card .photo img{transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .6s;transform:scale(1.01)}
+.feed .card .pill{transition:transform .4s ease;background:#071810d9}
+.feed .card.is-visible .pill{animation:tag-peek .65s ease both;animation-delay:.3s}
+@keyframes tag-peek{from{transform:translateY(-8px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(hover:hover){.feed .card.is-visible:hover{transform:translateY(-7px) scale(1.015);border-color:#b2ec8a95;box-shadow:0 18px 40px #0007}.feed .card:hover .photo img{transform:scale(1.095);filter:saturate(1.09)}.feed .card:hover .photo:after{transform:translateX(110%)}}
+.card button:active{transform:scale(.985)}
+.step{transition:transform .35s,border-color .35s}.step:hover{border-color:#96dc83aa;transform:translateY(-4px)}
+@media(max-width:560px){.brand-mark{width:58px}.brand-track,.brand-track .animated-logo{width:42px;height:42px}.rain-screen{opacity:.22}.rain-hero{opacity:.32}.feed .card .photo img{transition-duration:.6s}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.brand-track,.brand-sheen,.rain-screen i,.rain-hero i,.feed .card .pill{animation:none!important}.feed .card{opacity:1!important;transform:none!important;transition:none!important}.feed .card .photo img,.step,.feed .card .photo:after{transition:none!important}}
+
+
+/* More pronounced rain and visible motion across the card feed in Rain Edition */
+.notice{background:#162e27;color:#e5fb9a;font-weight:800;letter-spacing:1px;animation:notice-glow 6s ease-in-out infinite alternate}
+@keyframes notice-glow{from{box-shadow:inset 0 -1px 0 #b0e77919}to{box-shadow:inset 0 -1px 0 #b0e77980}}
+.live-indicator{display:inline-block;width:7px;height:7px;border-radius:50%;background:#bafc74;margin-right:8px;box-shadow:0 0 0 4px #bafc7430,0 0 19px #afff6c;animation:live-flash 2s ease-in-out infinite}
+@keyframes live-flash{50%{opacity:.38;box-shadow:0 0 0 9px #bafc7400}}
+.rain-screen{z-index:9;opacity:.72}
+.rain-hero{opacity:.85;z-index:1}
+.rain-screen i,.rain-hero i{width:1.7px;filter:drop-shadow(0 0 2px #e3fdffaa);background:linear-gradient(to bottom,transparent 0%,#d2f7ff48 32%,#d3f8ffe0 100%);animation-timing-function:linear}
+.rain-screen:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,#d0f6ff06 48%,transparent);pointer-events:none}
+.hero h1{animation:title-arrive 1.1s cubic-bezier(.2,.8,.3,1) both}
+.hero .lead{animation:title-arrive 1.2s .13s cubic-bezier(.2,.8,.3,1) both}
+@keyframes title-arrive{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.creative-ticker{overflow:hidden;background:#bbed83;color:#13261d;padding:13px 0;font:800 12px Unbounded,Manrope,sans-serif;letter-spacing:1.5px;white-space:nowrap;border-block:1px solid #a3cc67}
+.ticker-track{width:max-content;animation:ticker-ride 20s linear infinite;will-change:transform}
+@keyframes ticker-ride{to{transform:translateX(-50%)}}
+.feed .card.is-visible .photo img{animation:card-breathe 9s ease-in-out infinite alternate}
+.feed .card.is-visible:nth-child(3n) .photo img{animation-duration:11s;animation-delay:-3s}
+.feed .card.is-visible:nth-child(3n+1) .photo img{animation-duration:8s;animation-delay:-2s}
+@keyframes card-breathe{from{transform:scale(1.01) translateY(0)}to{transform:scale(1.095) translateY(-2%)}}
+.feed .card.is-visible{box-shadow:0 7px 22px #03150e55}
+.feed .card.is-visible .pill{box-shadow:0 0 0 1px #e3fff93b}
+@media(max-width:560px){.rain-screen{opacity:.55}.rain-hero{opacity:.7}.creative-ticker{font-size:10px}.notice{font-size:9px}.feed .card.is-visible .photo img{animation-duration:12s}}
+@media(prefers-reduced-motion:reduce){.notice,.live-indicator,.hero h1,.hero .lead,.ticker-track,.feed .card.is-visible .photo img{animation:none!important}}
+
+</style>
+</head>
+<body>
+<div class="notice">✦ VIEROAI / RAIN EDITION · НОВЫЙ ПРЕДПРОСМОТР ✦</div>
+<header><div class="container head">
+<a href="#home" class="brand brand-mark" aria-label="VieroAI — на главную" title="VieroAI"><span class="brand-track"><svg class="animated-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="logo-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#efffa8"/><stop offset="100%" stop-color="#a3ea86"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="19" fill="url(#logo-gradient)"/><path d="M12 17h11l9 29 9-29h11L37 53H27z" fill="#102719"/><circle cx="49" cy="15" r="4" fill="#102719"/><path d="M11 54h43" stroke="#113820" stroke-width="2" opacity=".35"/></svg><span class="brand-sheen"></span></span></a>
+<nav class="nav"><a href="#ideas">Идеи</a><a href="#how">Как работает</a><a href="#bot">Telegram</a></nav>
+<a class="bot" href="https://t.me/VieroAIbot">↗ Открыть бота</a>
+</div></header>
+<div class="rain-screen" id="rain-screen" aria-hidden="true"></div><main><section id="home" class="hero"><div class="ambient-glow"></div><div class="ambient-mist"></div><div class="rain-hero" id="rain-hero" aria-hidden="true"></div><div class="container hero-inner">
+<div class="hero-text"><div class="eyebrow"><span class="live-indicator"></span> RAIN EDITION · AI DESIGN STUDIO</div>
+<h1>Карточки товаров.<br><span>С характером.</span></h1>
+<p class="lead">Превращайте фотографию товара в серию выразительных карточек: новая атмосфера, стильная типографика, реальные преимущества. Выбирайте идею — а AI поможет воплотить её.</p>
+<div class="actions"><a class="bot" href="https://t.me/VieroAIbot">✦ Создать в Telegram →</a><a class="secondary" href="#ideas">Смотреть идеи ↓</a></div>
+<p class="atmosphere-note">◉ Анимированный дождь на всём сайте · живые карточки</p>
+</div><div class="scene"><div class="halo"></div><div class="glint glint-one"></div><div class="glint glint-two"></div><div class="scene-card"><b>04 / CREATIVE</b><small>Четыре продуманные сцены.<br>Один узнаваемый товар.</small></div></div>
+</div></section>
+<div class="creative-ticker" aria-label="Анимированная строка студии"><div class="ticker-track">✦ РЕКЛАМНЫЕ КАРТОЧКИ ✦ СТИЛЬНЫЕ СЦЕНЫ ✦ ЖИВОЙ КАТАЛОГ ✦ НЕЙРОДИЗАЙН ✦ РЕКЛАМНЫЕ КАРТОЧКИ ✦ СТИЛЬНЫЕ СЦЕНЫ ✦ ЖИВОЙ КАТАЛОГ ✦ НЕЙРОДИЗАЙН ✦</div></div><section class="section container" id="ideas"><div class="eyebrow">Идеи для вдохновения</div><h2>Популярные идеи</h2><p class="sub">Сцены для одежды, косметики, дома, техники и товаров для животных. Примеры представлены для вдохновения — ваш товар останется главным героем.</p>
+<div class="tags" id="cats"></div><div class="feed" id="cards"></div></section>
+<section class="section container" id="how"><div class="eyebrow">Просто и понятно</div><h2>Как это работает</h2><div class="steps">
+<div class="step"><b>01</b><h3>Отправляете фото</h3><p>Фото товара и только подтверждённые характеристики, чтобы не придумывать лишнего.</p></div>
+<div class="step"><b>02</b><h3>Выбираете подачу</h3><p>Fashion-студия, натуральный интерьер, предметная съёмка или яркая реклама.</p></div>
+<div class="step"><b>03</b><h3>Получаете карточки</h3><p>Подтверждаете платную AI-генерацию отдельно или выбираете бесплатный предпросмотр.</p></div>
+</div></section></main>
+<footer id="bot" class="container footer"><span>© VieroAI · Концепт обновлённого сайта</span><a href="https://t.me/VieroAIbot">Telegram: @VieroAIbot ↗</a></footer>
+<script>
+(function(){
+const items=[
+['Одежда','Fashion lookbook','Studio','photo-1483985988355-763728e1935b'],
+['Обувь','Контраст и энергия','Динамика','photo-1542291026-7eec264c27ff'],
+['Косметика','Чистая эстетика','Beauty','photo-1608248543803-ba4f8c70ae0b'],
+['Дом','Скандинавский уют','Интерьер','photo-1600210492486-724fe5c67fb0'],
+['Техника','Студийный свет','Tech','photo-1505740420928-5e560c06d30e'],
+['Животные','Кошка и комфорт','Pet care','photo-1514888286974-6c03e2ca1dba'],
+['Животные','Прогулка с другом','Pet lifestyle','photo-1552053831-71594a27632d'],
+['Аксессуары','Тихая роскошь','Luxury','photo-1524592094714-0f0654e20314'],
+['Косметика','Солнечные блики','Natural','photo-1596462502278-27bfdc403348'],
+['Одежда','Городская история','Editorial','photo-1529139574466-a303027c1d8b'],
+['Обувь','Кроссовки в движении','Sports','photo-1600185365926-3a2ce3cdb9eb'],
+['Дом','Керамика и тёплый свет','Home','photo-1490312278390-ab64016e0aa9'],
+['Техника','Чистый каталог','Minimal','photo-1583394838336-acd977736f90'],
+['Животные','Домашний уют','Animals','photo-1573865526739-10659fec78a5'],
+['Аксессуары','Украшения и мрамор','Details','photo-1617038260897-41a1f14a8ca0'],
+['Косметика','Ритуал ухода','Skincare','photo-1601049541289-9b1b7bbbfe19']
+];
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rainCount=window.matchMedia('(max-width: 560px)').matches?36:70;
+function putRain(id,n){var layer=document.getElementById(id);if(!layer||reducedMotion)return;for(var ri=0;ri<n;ri++){var drop=document.createElement('i');var x=(ri*37.7+11.2)%100;drop.style.left=x+'%';drop.style.setProperty('--duration',(1.15+(ri%7)*.20)+'s');drop.style.setProperty('--delay',(-ri*.42)+'s');drop.style.setProperty('--length',(33+(ri%5)*15)+'px');drop.style.setProperty('--opacity',(0.2+(ri%6)*.095).toFixed(2));layer.appendChild(drop)}}
+putRain('rain-screen',rainCount);putRain('rain-hero',Math.round(rainCount*.75));
+const revealObserver=(!reducedMotion && 'IntersectionObserver' in window)?new IntersectionObserver(function(entries,obs){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');obs.unobserve(entry.target)}})},{rootMargin:'0px 0px -40px 0px',threshold:0.07}):null;
+const cats=['Все','Одежда','Обувь','Косметика','Дом','Техника','Животные','Аксессуары'];var chosen='Все',bar=document.getElementById('cats'),cards=document.getElementById('cards');
+function show(){cards.textContent='';items.filter(function(x){return chosen==='Все'||x[0]===chosen}).forEach(function(x){var card=document.createElement('article');card.className='card';card.style.setProperty("--reveal-delay",((cards.children.length%5)*75)+"ms");var img=document.createElement('img');img.loading='lazy';img.src='https://images.unsplash.com/'+x[3]+'?auto=format&fit=crop&w=560&q=80';img.alt='Пример идеи: '+x[1];img.onerror=function(){img.style.display='none'};var photo=document.createElement('div');photo.className='photo';photo.appendChild(img);var pill=document.createElement('span');pill.className='pill';pill.textContent=x[2];photo.appendChild(pill);var body=document.createElement('div');body.className='card-body';var name=document.createElement('h3');name.textContent=x[1];var category=document.createElement('p');category.textContent=x[0];var go=document.createElement('button');go.textContent='Использовать идею ↗';go.addEventListener('click',function(){window.location.href='https://t.me/VieroAIbot'});body.append(name,category,go);card.append(photo,body);cards.appendChild(card);revealObserver?.observe(card)})}
+cats.forEach(function(c){var btn=document.createElement('button');btn.textContent=c;btn.className=c==='Все'?'active':'';btn.onclick=function(){chosen=c;bar.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b===btn)});show()};bar.appendChild(btn)});show();
+})();
+</script></body></html>
