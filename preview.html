@@ -31,22 +31,52 @@ header{position:sticky;z-index:20;top:0;background:#0b1210e9;backdrop-filter:blu
 @keyframes glint-rise{to{transform:translateY(-38px);opacity:.24}}
 @keyframes card-hover{to{transform:rotate(-3deg) translateY(-7px)}}
 @media(prefers-reduced-motion:reduce){.ambient-glow,.ambient-mist,.scene .halo,.glint,.scene-card{animation:none!important}}
+
+/* VieroAI animated rainy editorial: light performance budget on mobile. */
+.brand-mark{position:relative;display:inline-flex;align-items:center;width:70px;height:54px;justify-content:flex-start;isolation:isolate;overflow:visible}
+.brand-track{position:relative;display:block;width:44px;height:44px;transform-origin:center;animation:logo-enter 850ms cubic-bezier(.19,1.2,.3,1) both,logo-cruise 11s ease-in-out 1s infinite}
+.brand-track .animated-logo{display:block;width:44px;height:44px;filter:drop-shadow(0 4px 16px #d4ff8052);transition:filter .4s}
+.brand-mark:hover .animated-logo{filter:drop-shadow(0 7px 22px #d4ff80a0)}
+.brand-sheen{position:absolute;inset:-15px;background:linear-gradient(125deg,transparent 35%,#fff8 48%,transparent 58%);transform:translateX(-140%) rotate(-8deg);animation:logo-gleam 8s ease-in-out 1.5s infinite;pointer-events:none;clip-path:inset(14px 12px 14px 0 round 16px)}
+@keyframes logo-enter{0%{transform:translateX(-55px) rotate(-25deg) scale(.4);opacity:0}75%{transform:translateX(7px) rotate(8deg) scale(1.07);opacity:1}100%{transform:translateX(0) rotate(0) scale(1);opacity:1}}
+@keyframes logo-cruise{0%,18%,65%,100%{transform:translateX(0) rotate(0)}35%{transform:translateX(16px) rotate(7deg)}50%{transform:translateX(12px) rotate(-4deg)}}
+@keyframes logo-gleam{0%,55%,100%{transform:translateX(-130%) rotate(-8deg)}66%{transform:translateX(130%) rotate(-8deg)}}
+.rain-screen,.rain-hero{pointer-events:none;position:fixed;z-index:13;inset:0;overflow:hidden;opacity:.37;transform:translateZ(0);contain:strict}
+.rain-hero{position:absolute;z-index:1;opacity:.48;contain:layout paint}
+.rain-screen i,.rain-hero i{position:absolute;top:-120px;width:1px;height:var(--length,65px);border-radius:50%;background:linear-gradient(to bottom,transparent,#d1eff5cb);opacity:var(--opacity,.6);transform:translate3d(0,-120px,0) rotate(11deg);animation:rain-fall var(--duration,1.3s) linear var(--delay,0s) infinite;will-change:transform}
+@keyframes rain-fall{to{transform:translate3d(-120px,calc(100vh + 260px),0) rotate(11deg)}}
+.hero{background:radial-gradient(ellipse at 73% 27%,#336c6087 0%,transparent 48%),linear-gradient(135deg,#0b1c21,#18352f 60%,#1b3329)}
+.hero .ambient-mist{z-index:0;opacity:.64}
+.feed .card{transition:transform .55s cubic-bezier(.2,.75,.24,1),opacity .65s ease,border-color .3s,box-shadow .5s;transition-delay:var(--reveal-delay,0ms),var(--reveal-delay,0ms),0ms,0ms;will-change:auto;opacity:0;transform:translateY(26px) scale(.975)}
+.feed .card.is-visible{opacity:1;transform:translateY(0) scale(1)}
+.feed .card .photo{overflow:hidden}
+.feed .card .photo:after{content:"";pointer-events:none;position:absolute;inset:0;background:linear-gradient(112deg,transparent 25%,#ffffff17 46%,transparent 62%);transform:translateX(-110%);transition:transform 850ms ease}
+.feed .card .photo img{transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .6s;transform:scale(1.01)}
+.feed .card .pill{transition:transform .4s ease;background:#071810d9}
+.feed .card.is-visible .pill{animation:tag-peek .65s ease both;animation-delay:.3s}
+@keyframes tag-peek{from{transform:translateY(-8px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(hover:hover){.feed .card.is-visible:hover{transform:translateY(-7px) scale(1.015);border-color:#b2ec8a95;box-shadow:0 18px 40px #0007}.feed .card:hover .photo img{transform:scale(1.095);filter:saturate(1.09)}.feed .card:hover .photo:after{transform:translateX(110%)}}
+.card button:active{transform:scale(.985)}
+.step{transition:transform .35s,border-color .35s}.step:hover{border-color:#96dc83aa;transform:translateY(-4px)}
+@media(max-width:560px){.brand-mark{width:58px}.brand-track,.brand-track .animated-logo{width:42px;height:42px}.rain-screen{opacity:.22}.rain-hero{opacity:.32}.feed .card .photo img{transition-duration:.6s}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.brand-track,.brand-sheen,.rain-screen i,.rain-hero i,.feed .card .pill{animation:none!important}.feed .card{opacity:1!important;transform:none!important;transition:none!important}.feed .card .photo img,.step,.feed .card .photo:after{transition:none!important}}
+
 </style>
 </head>
 <body>
 <div class="notice">Предпросмотр новой версии · действующий сайт не изменён</div>
 <header><div class="container head">
-<a href="#home" class="brand"><svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="64" height="64" rx="18" fill="#dafb73"/><path d="M13 18h10l9 27 9-27h10L37 53H27z" fill="#0a2117"/><circle cx="46" cy="17" r="4" fill="#0a2117"/></svg><span>Viero<em>AI</em></span></a>
+<a href="#home" class="brand brand-mark" aria-label="VieroAI — на главную" title="VieroAI"><span class="brand-track"><svg class="animated-logo" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="logo-gradient" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#efffa8"/><stop offset="100%" stop-color="#a3ea86"/></linearGradient></defs><rect x="2" y="2" width="60" height="60" rx="19" fill="url(#logo-gradient)"/><path d="M12 17h11l9 29 9-29h11L37 53H27z" fill="#102719"/><circle cx="49" cy="15" r="4" fill="#102719"/><path d="M11 54h43" stroke="#113820" stroke-width="2" opacity=".35"/></svg><span class="brand-sheen"></span></span></a>
 <nav class="nav"><a href="#ideas">Идеи</a><a href="#how">Как работает</a><a href="#bot">Telegram</a></nav>
 <a class="bot" href="https://t.me/VieroAIbot">↗ Открыть бота</a>
 </div></header>
-<main><section id="home" class="hero"><div class="ambient-glow"></div><div class="ambient-mist"></div><div class="container hero-inner">
+<div class="rain-screen" id="rain-screen" aria-hidden="true"></div><main><section id="home" class="hero"><div class="ambient-glow"></div><div class="ambient-mist"></div><div class="rain-hero" id="rain-hero" aria-hidden="true"></div><div class="container hero-inner">
 <div class="hero-text"><div class="eyebrow">AI design studio / Wildberries · Ozon</div>
 <h1>Карточки товаров.<br><span>С характером.</span></h1>
 <p class="lead">Превращайте фотографию товара в серию выразительных карточек: новая атмосфера, стильная типографика, реальные преимущества. Выбирайте идею — а AI поможет воплотить её.</p>
 <div class="actions"><a class="bot" href="https://t.me/VieroAIbot">✦ Создать в Telegram →</a><a class="secondary" href="#ideas">Смотреть идеи ↓</a></div>
-<p class="atmosphere-note">✦ Живой свет · мягкое движение · никакой лишней анимации</p>
-</div><div class="scene"><div class="halo"></div><div class="glint glint-one"></div><div class="glint glint-two"></div><div class="scene-card"><b>VIERO / AI</b><small>Четыре продуманные сцены.<br>Один узнаваемый товар.</small></div></div>
+<p class="atmosphere-note">✦ Мягкий дождь · живая атмосфера · премиальная предметная съёмка</p>
+</div><div class="scene"><div class="halo"></div><div class="glint glint-one"></div><div class="glint glint-two"></div><div class="scene-card"><b>04 / CREATIVE</b><small>Четыре продуманные сцены.<br>Один узнаваемый товар.</small></div></div>
 </div></section>
 <section class="section container" id="ideas"><div class="eyebrow">Идеи для вдохновения</div><h2>Популярные идеи</h2><p class="sub">Сцены для одежды, косметики, дома, техники и товаров для животных. Примеры представлены для вдохновения — ваш товар останется главным героем.</p>
 <div class="tags" id="cats"></div><div class="feed" id="cards"></div></section>
@@ -55,7 +85,7 @@ header{position:sticky;z-index:20;top:0;background:#0b1210e9;backdrop-filter:blu
 <div class="step"><b>02</b><h3>Выбираете подачу</h3><p>Fashion-студия, натуральный интерьер, предметная съёмка или яркая реклама.</p></div>
 <div class="step"><b>03</b><h3>Получаете карточки</h3><p>Подтверждаете платную AI-генерацию отдельно или выбираете бесплатный предпросмотр.</p></div>
 </div></section></main>
-<footer class="container footer"><span>© VieroAI · Концепт обновлённого сайта</span><a href="https://t.me/VieroAIbot">Telegram: @VieroAIbot ↗</a></footer>
+<footer id="bot" class="container footer"><span>© VieroAI · Концепт обновлённого сайта</span><a href="https://t.me/VieroAIbot">Telegram: @VieroAIbot ↗</a></footer>
 <script>
 (function(){
 const items=[
@@ -76,8 +106,13 @@ const items=[
 ['Аксессуары','Украшения и мрамор','Details','photo-1617038260897-41a1f14a8ca0'],
 ['Косметика','Ритуал ухода','Skincare','photo-1601049541289-9b1b7bbbfe19']
 ];
+const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const rainCount=window.matchMedia('(max-width: 560px)').matches?24:44;
+function putRain(id,n){var layer=document.getElementById(id);if(!layer||reducedMotion)return;for(var ri=0;ri<n;ri++){var drop=document.createElement('i');var x=(ri*37.7+11.2)%100;drop.style.left=x+'%';drop.style.setProperty('--duration',(1.15+(ri%7)*.20)+'s');drop.style.setProperty('--delay',(-ri*.42)+'s');drop.style.setProperty('--length',(33+(ri%5)*15)+'px');drop.style.setProperty('--opacity',(0.2+(ri%6)*.095).toFixed(2));layer.appendChild(drop)}}
+putRain('rain-screen',rainCount);putRain('rain-hero',Math.round(rainCount*.65));
+const revealObserver=(!reducedMotion && 'IntersectionObserver' in window)?new IntersectionObserver(function(entries,obs){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('is-visible');obs.unobserve(entry.target)}})},{rootMargin:'0px 0px -40px 0px',threshold:0.07}):null;
 const cats=['Все','Одежда','Обувь','Косметика','Дом','Техника','Животные','Аксессуары'];var chosen='Все',bar=document.getElementById('cats'),cards=document.getElementById('cards');
-function show(){cards.textContent='';items.filter(function(x){return chosen==='Все'||x[0]===chosen}).forEach(function(x){var card=document.createElement('article');card.className='card';var img=document.createElement('img');img.loading='lazy';img.src='https://images.unsplash.com/'+x[3]+'?auto=format&fit=crop&w=560&q=80';img.alt='Пример идеи: '+x[1];img.onerror=function(){img.style.display='none'};var photo=document.createElement('div');photo.className='photo';photo.appendChild(img);var pill=document.createElement('span');pill.className='pill';pill.textContent=x[2];photo.appendChild(pill);var body=document.createElement('div');body.className='card-body';var name=document.createElement('h3');name.textContent=x[1];var category=document.createElement('p');category.textContent=x[0];var go=document.createElement('button');go.textContent='Использовать идею ↗';go.addEventListener('click',function(){window.location.href='https://t.me/VieroAIbot'});body.append(name,category,go);card.append(photo,body);cards.appendChild(card)})}
+function show(){cards.textContent='';items.filter(function(x){return chosen==='Все'||x[0]===chosen}).forEach(function(x){var card=document.createElement('article');card.className='card';card.style.setProperty("--reveal-delay",((cards.children.length%5)*75)+"ms");var img=document.createElement('img');img.loading='lazy';img.src='https://images.unsplash.com/'+x[3]+'?auto=format&fit=crop&w=560&q=80';img.alt='Пример идеи: '+x[1];img.onerror=function(){img.style.display='none'};var photo=document.createElement('div');photo.className='photo';photo.appendChild(img);var pill=document.createElement('span');pill.className='pill';pill.textContent=x[2];photo.appendChild(pill);var body=document.createElement('div');body.className='card-body';var name=document.createElement('h3');name.textContent=x[1];var category=document.createElement('p');category.textContent=x[0];var go=document.createElement('button');go.textContent='Использовать идею ↗';go.addEventListener('click',function(){window.location.href='https://t.me/VieroAIbot'});body.append(name,category,go);card.append(photo,body);cards.appendChild(card);revealObserver?.observe(card)})}
 cats.forEach(function(c){var btn=document.createElement('button');btn.textContent=c;btn.className=c==='Все'?'active':'';btn.onclick=function(){chosen=c;bar.querySelectorAll('button').forEach(function(b){b.classList.toggle('active',b===btn)});show()};bar.appendChild(btn)});show();
 })();
 </script></body></html>
