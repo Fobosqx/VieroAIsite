@@ -15,6 +15,22 @@ header{position:sticky;z-index:20;top:0;background:#0b1210e9;backdrop-filter:blu
 .section{padding:65px 0}.section h2{font:700 clamp(22px,4vw,37px)/1.25 Unbounded,Manrope,sans-serif;letter-spacing:-1.2px}.sub{color:var(--muted);line-height:1.7;font-size:13px}.tags{display:flex;gap:8px;overflow:auto;padding:15px 0 22px;scrollbar-width:none}.tags button{flex:none;padding:11px 15px;border-radius:99px;border:1px solid var(--line);background:#192b23;color:#d2e2d6;font-size:12px}.tags button.active{color:#0e1b11;background:var(--lime);border-color:var(--lime);font-weight:800}.feed{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}.card{background:var(--panel);border:1px solid #32463a;border-radius:18px;overflow:hidden;transition:transform .25s}.card:hover{transform:translateY(-4px)}.photo{height:245px;position:relative;background:linear-gradient(135deg,#526a4a,#131e19)}.photo img{width:100%;height:100%;display:block;object-fit:cover}.pill{position:absolute;top:10px;left:10px;border-radius:99px;padding:6px 10px;font-size:10px;font-weight:800;background:#071810c7}.card-body{padding:14px}.card h3{font-size:14px;line-height:1.45;margin:0 0 5px}.card p{color:#9cb4a5;font-size:11px;margin:0 0 13px}.card button{width:100%;border:0;border-radius:11px;padding:10px;background:#ebf4dc;color:#0d1a11;font-weight:800;font-size:12px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:22px}.step{background:#14241b;border:1px solid #355044;border-radius:22px;padding:24px}.step b{font:700 33px Unbounded,sans-serif;color:var(--lime)}.step h3{font-size:14px;margin:15px 0 7px}.step p{font-size:12px;color:var(--muted);line-height:1.6}.footer{padding:34px 0 65px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;color:#9eb3a5;font-size:12px}.notice{display:block;padding:10px 0;color:#a7bcac;font-size:10px;text-align:center;background:#122119}
 @media(max-width:800px){.nav{display:none}.feed{grid-template-columns:repeat(3,minmax(0,1fr))}.photo{height:220px}.hero-inner{grid-template-columns:1fr}.hero-text{padding:45px 0 5px}.hero{min-height:unset}.scene{height:210px}.sun{top:0;right:20%}.scene-card{margin:30px 0 0 0}.forest{height:160px}.hero h1{letter-spacing:-1.8px}}
 @media(max-width:560px){.container{width:calc(100% - 32px)}.head{height:64px}.brand{font-size:17px}.bot{padding:12px 13px;font-size:11px}.hero h1{font-size:clamp(31px,9vw,44px);letter-spacing:-1.8px}.lead{font-size:13px}.scene{height:190px}.scene-card{padding:17px 19px}.scene-card b{font-size:22px}.weathers{margin-top:24px}.feed{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.photo{height:215px}.card-body{padding:11px}.card h3{font-size:12px}.card p{font-size:10px}.section{padding:48px 0}.steps{grid-template-columns:1fr}.step{padding:20px}.footer{display:block}.footer a{display:inline-block;margin-top:10px}}
+
+/* A single calm ambient atmosphere: slow moving light and haze. No weather UI. */
+.hero{background:radial-gradient(ellipse at 77% 28%,#305f4180 0%,transparent 48%),linear-gradient(135deg,#0d1813,#14271f 58%,#253e2b);}
+.ambient-glow{position:absolute;inset:-25%;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 72% 35%,#9ed19e4a,transparent 34%),radial-gradient(ellipse at 85% 65%,#a5f7ab26,transparent 42%);filter:blur(34px);animation:ambient-drift 20s ease-in-out infinite alternate;transform-origin:70% 45%}
+.ambient-mist{position:absolute;pointer-events:none;z-index:1;inset:0;opacity:.65;background:linear-gradient(105deg,transparent 28%,#d6f2cc0a 45%,transparent 60%),radial-gradient(ellipse at 65% 80%,#c4e7cb24,transparent 50%);animation:mist-glide 26s ease-in-out infinite alternate}
+.scene .halo{background:#c3eab625;filter:blur(65px);animation:halo-pulse 9s ease-in-out infinite alternate}
+.glint{position:absolute;z-index:1;width:8px;height:8px;border-radius:50%;background:#d9fd75aa;box-shadow:0 0 30px #caff9d87;animation:glint-rise 10s ease-in-out infinite alternate}
+.glint-one{top:29%;left:24%}.glint-two{top:63%;right:22%;width:5px;height:5px;animation-delay:-4s}
+.scene-card{animation:card-hover 8s ease-in-out infinite alternate}
+.atmosphere-note{color:#cce4d3;opacity:.8;font-size:11px;letter-spacing:.3px;margin-top:30px}
+@keyframes ambient-drift{from{transform:translate3d(-2%,-1%,0) scale(1)}to{transform:translate3d(4%,3%,0) scale(1.06)}}
+@keyframes mist-glide{from{transform:translateX(-4%);opacity:.35}to{transform:translateX(5%);opacity:.72}}
+@keyframes halo-pulse{to{opacity:.55;transform:scale(1.2)}}
+@keyframes glint-rise{to{transform:translateY(-38px);opacity:.24}}
+@keyframes card-hover{to{transform:rotate(-3deg) translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){.ambient-glow,.ambient-mist,.scene .halo,.glint,.scene-card{animation:none!important}}
 </style>
 </head>
 <body>
@@ -24,13 +40,13 @@ header{position:sticky;z-index:20;top:0;background:#0b1210e9;backdrop-filter:blu
 <nav class="nav"><a href="#ideas">Идеи</a><a href="#how">Как работает</a><a href="#bot">Telegram</a></nav>
 <a class="bot" href="https://t.me/VieroAIbot">↗ Открыть бота</a>
 </div></header>
-<main><section id="home" class="hero" data-weather="forest"><div class="rain-layer" id="rain"></div><div class="container hero-inner">
+<main><section id="home" class="hero"><div class="ambient-glow"></div><div class="ambient-mist"></div><div class="container hero-inner">
 <div class="hero-text"><div class="eyebrow">AI design studio / Wildberries · Ozon</div>
 <h1>Карточки товаров.<br><span>С характером.</span></h1>
 <p class="lead">Превращайте фотографию товара в серию выразительных карточек: новая атмосфера, стильная типографика, реальные преимущества. Выбирайте идею — а AI поможет воплотить её.</p>
 <div class="actions"><a class="bot" href="https://t.me/VieroAIbot">✦ Создать в Telegram →</a><a class="secondary" href="#ideas">Смотреть идеи ↓</a></div>
-<div class="weathers"><span>Атмосфера:</span><button data-weather="forest" class="active">🌲 Лес</button><button data-weather="rain">🌧 Дождь</button><button data-weather="sun">☀️ Солнце</button></div>
-</div><div class="scene"><div class="halo"></div><div class="sun"></div><div class="forest"></div><div class="scene-card"><b>VIERO / 04</b><small>Четыре продуманные сцены.<br>Один узнаваемый товар.</small></div></div>
+<p class="atmosphere-note">✦ Живой свет · мягкое движение · никакой лишней анимации</p>
+</div><div class="scene"><div class="halo"></div><div class="glint glint-one"></div><div class="glint glint-two"></div><div class="scene-card"><b>VIERO / AI</b><small>Четыре продуманные сцены.<br>Один узнаваемый товар.</small></div></div>
 </div></section>
 <section class="section container" id="ideas"><div class="eyebrow">Идеи для вдохновения</div><h2>Популярные идеи</h2><p class="sub">Сцены для одежды, косметики, дома, техники и товаров для животных. Примеры представлены для вдохновения — ваш товар останется главным героем.</p>
 <div class="tags" id="cats"></div><div class="feed" id="cards"></div></section>
@@ -42,8 +58,6 @@ header{position:sticky;z-index:20;top:0;background:#0b1210e9;backdrop-filter:blu
 <footer class="container footer"><span>© VieroAI · Концепт обновлённого сайта</span><a href="https://t.me/VieroAIbot">Telegram: @VieroAIbot ↗</a></footer>
 <script>
 (function(){
-const hero=document.querySelector('.hero');document.querySelectorAll('[data-weather]').forEach(function(b){if(b.tagName!=='BUTTON')return;b.addEventListener('click',function(){hero.dataset.weather=b.dataset.weather;document.querySelectorAll('.weathers button').forEach(function(x){x.classList.toggle('active',x===b)})})});
-var rain=document.getElementById('rain');for(var i=0;i<32;i++){var p=document.createElement('i');p.style.setProperty('--x',(i*3.4+1)+'%');p.style.setProperty('--d',(1+(i%5)*.23)+'s');p.style.setProperty('--delay',(-i*.21)+'s');rain.appendChild(p)}
 const items=[
 ['Одежда','Fashion lookbook','Studio','photo-1483985988355-763728e1935b'],
 ['Обувь','Контраст и энергия','Динамика','photo-1542291026-7eec264c27ff'],
